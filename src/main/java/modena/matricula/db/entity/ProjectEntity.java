@@ -1,7 +1,8 @@
 package modena.matricula.db.entity;
 
-public class ProjectEntity {
-    public int id;
+import modena.matricula.db.entity.common.CommonEntity;
+
+public class ProjectEntity extends CommonEntity {
     public String name;
     public String description;
     public String startDate;
