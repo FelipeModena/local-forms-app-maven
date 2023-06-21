@@ -6,8 +6,8 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-import modena.matricula.db.MatriculaDB;
 import modena.matricula.db.entity.MatriculaEntity;
+import modena.matricula.db.repository.MatriculaRepository;
 
 
 
@@ -37,7 +37,7 @@ public class GetMatriculaFrame extends JFrame {
 
     void submitForm() {
         String username = userField.getText();
-        MatriculaDB matriculaDB = new MatriculaDB();
+        MatriculaRepository matriculaDB = new MatriculaRepository();
         userFound = matriculaDB.read(username);
         if (userFound != null) {
             System.out.println(userFound.senhaEstudante);

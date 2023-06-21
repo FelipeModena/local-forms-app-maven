@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import modena.matricula.db.MatriculaDB;
 import modena.matricula.db.entity.MatriculaEntity;
+import modena.matricula.db.repository.MatriculaRepository;
 
 
 public class ListMatriculasFrame extends JFrame {
@@ -16,7 +16,7 @@ public class ListMatriculasFrame extends JFrame {
     ListMatriculasFrame() {
         baseConfig();
 
-        MatriculaDB matriculaDB = new MatriculaDB();
+        MatriculaRepository matriculaDB = new MatriculaRepository();
         ArrayList<MatriculaEntity> listOfMatriculas = matriculaDB.readAll();
 
         for (MatriculaEntity entity : listOfMatriculas) {

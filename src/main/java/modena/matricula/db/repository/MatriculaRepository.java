@@ -1,4 +1,4 @@
-package modena.matricula.db;
+package modena.matricula.db.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import modena.matricula.db.entity.MatriculaEntity;
 import modena.matricula.db.sqlite.connect.ConnectionManagerSQLite;
 
-public class MatriculaDB {
+public class MatriculaRepository {
     private String sqlCode;
 
     private Connection connection;
 
-    public MatriculaDB() {
+    public MatriculaRepository() {
         connection = ConnectionManagerSQLite.getDbConnection();
 
         // ConnectionManager.createNewDatabase();

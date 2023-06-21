@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import modena.matricula.db.MatriculaDB;
 import modena.matricula.db.entity.MatriculaEntity;
+import modena.matricula.db.repository.MatriculaRepository;
 
 
 public class AddMatriculaFrame extends JFrame {
@@ -85,7 +85,7 @@ public class AddMatriculaFrame extends JFrame {
     }
 
     void submitForm() {
-        MatriculaDB matriculaDB = new MatriculaDB();
+        MatriculaRepository matriculaDB = new MatriculaRepository();
 
         String nomeCompleto = nomeCompletoField.getText();
         int idade = idadeField.getText().isEmpty() ? 0 : Integer.parseInt(idadeField.getText());
