@@ -1,20 +1,20 @@
 package modena;
 
-import modena.matricula.MenuFrame;
-import modena.matricula.db.sqlite.connect.ConnectionManagerSQLite;
+import modena.infra.db.entity.AdminEntity;
+import modena.infra.db.repository.AdminRepository;
+import modena.ui.admin.AdminLoginFrame;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main(String[] args) {
 
-        ConnectionManagerSQLite.getDbConnection();
+        AdminLoginFrame adminLoginFrame = new AdminLoginFrame();
+        adminLoginFrame.initialize();
+        AdminRepository adminRepository = new AdminRepository();
 
-        MenuFrame menuFrame = new MenuFrame();
-        menuFrame.initialize();
+        AdminEntity adminEntity = new AdminEntity("admin", "admin", "admin", "admin.email@email.com");
+        adminRepository.create(adminEntity);
+        // MenuFrame menuFrame = new MenuFrame();
+        // menuFrame.initialize();
     }
-
 
 }
