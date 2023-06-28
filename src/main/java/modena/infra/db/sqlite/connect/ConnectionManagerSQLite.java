@@ -16,9 +16,9 @@ public class ConnectionManagerSQLite {
         try {
             Class.forName("org.sqlite.JDBC");
 
-            //delete file sqlite_db.db
-            File file = new File(DB_NAME);
-            file.delete();
+//            //delete file sqlite_db.db
+//            File file = new File(DB_NAME);
+//            file.delete();
 
             connectionDb = DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
             checkDatabase();

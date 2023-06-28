@@ -15,8 +15,14 @@ public class AdminUsecase {
 
             adminRepository.put("logged", "true");
             return true;
-        } else
+        } else {
             return false;
+        }
+    }
+
+    public boolean checkLoggedUser() {
+        return true;
+
     }
 
     private AdminEntity toEntity(String name, String password) {
