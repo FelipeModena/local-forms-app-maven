@@ -61,6 +61,11 @@ public class LoginFrameBeans extends javax.swing.JFrame {
                 loginButtonMouseClicked(evt);
             }
         });
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         userTextfield.setText("admin");
 
@@ -137,6 +142,10 @@ public class LoginFrameBeans extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private class Business {
 
