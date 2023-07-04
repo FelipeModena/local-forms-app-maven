@@ -28,6 +28,7 @@ public class NewDependentPanel extends javax.swing.JPanel {
         initComponents();
         this.newDependentTextFieldList = newDependentTextFieldList;
         position = order;
+        setVisible(true);
     }
 
     /**

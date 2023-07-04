@@ -31,13 +31,17 @@ public class NRList {
 
     }
 
+    public ArrayList<NR> getNrs() {
+        return nrList;
+    }
+
     public String[] NRListConcat() {
         int size = nrList.size();
         String[] result = new String[size];
 
         for (int i = 0; i < size; i++) {
             NR nr = nrList.get(i);
-            result[i] = nr.nr + " - " + nr.title;
+            result[i] = nr.nr + " % " + nr.title;
         }
 
         return result;
@@ -53,6 +57,11 @@ public class NRList {
             this.nr = nr;
             this.title = title;
             this.concat = nr + "==" + title;
+        }
+
+        @Override
+        public String toString() {
+            return this.nr;
         }
     }
 

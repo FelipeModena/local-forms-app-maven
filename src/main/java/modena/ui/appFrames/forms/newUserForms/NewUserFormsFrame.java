@@ -4,12 +4,15 @@
  */
 package modena.ui.appFrames.forms.newUserForms;
 
+import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
+import resources.dataArray.JobsAvailable;
 import resources.dataArray.NRList;
 
 /**
@@ -27,8 +30,6 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         newDependentTextFieldList = new ArrayList<>();
         JobLocalInputListOptionsPopulate();
     }
-
-    private final ArrayList<NewDependentInput> newDependentTextFieldList;
 
     public class NewDependentInput {
 
@@ -49,9 +50,25 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
     }
 
+    public class NRChosenInput {
+
+        JDateChooser date;
+
+        NRChosenInput(JDateChooser date) {
+            this.date = date;
+        }
+
+        @Override
+        public String toString() {
+            return "Date: " + date.toString();
+        }
+
+    }
+
     private void initCustomComponents() {
         dependentsListPanel.setLayout(new BoxLayout(dependentsListPanel, BoxLayout.Y_AXIS));
         jobOperationNRListPopulate();
+        jobFunctionjListPopulate();
     }
 
     private void jobOperationNRListPopulate() {
@@ -71,12 +88,9 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
     }
 
-    private final String[] JobLocalInputListOptionsPopulate = {"Obra", "Escritório"};
-
-    private void JobLocalInputListOptionsPopulate() {
-
-        jobLocalInputList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = JobLocalInputListOptionsPopulate;
+    private void jobFunctionjListPopulate() {
+        jobFunctionjList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = jobList.listOfJobsTitle();
 
             public int getSize() {
                 return strings.length;
@@ -86,6 +100,7 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                 return strings[i];
             }
         });
+        jobFunctionjListjScrollPane.setViewportView(jobFunctionjList);
 
     }
 
@@ -133,7 +148,7 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         hieringDatejDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         asoDatejDateChooser = new com.toedter.calendar.JDateChooser();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jobFunctionjListjScrollPane = new javax.swing.JScrollPane();
         jobFunctionjList = new javax.swing.JList<>();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -144,10 +159,13 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         addNewDependentButton = new javax.swing.JButton();
         dependentsListScrollPane = new javax.swing.JScrollPane();
         dependentsListPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jobOperationNRListjPanel = new javax.swing.JPanel();
         jobOperationNRscrollPane = new javax.swing.JScrollPane();
         jobOperationNRsList = new javax.swing.JList<>();
+        nrSelectedListjScrollPane = new javax.swing.JScrollPane();
+        nrSelectListPanel = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,37 +191,37 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
         namejTextField.setText("user1");
 
-        rgjTextField.setText("jTextField1");
+        rgjTextField.setText("502332578");
 
         cpfjTextField.setText("46260974809");
 
-        workPermitjTextField.setText("jTextField1");
+        workPermitjTextField.setText("numero carteira");
 
-        militaryjTextField.setText("jTextField1");
+        militaryjTextField.setText("militara valor");
 
-        pisjTextField.setText("jTextField1");
+        pisjTextField.setText("PIS value");
 
         jLabel9.setText("Rua");
 
-        streetjTextField.setText("jTextField1");
+        streetjTextField.setText("rua tal");
 
         jLabel8.setText("Possui dependentes?");
 
         adressComplementjLabel.setText("Complemento");
 
-        adressComplementjTextField.setText("jTextField1");
+        adressComplementjTextField.setText("complemento tal");
 
         jLabel11.setText("Bairro");
 
-        neighborhoodjTextField.setText("jTextField1");
+        neighborhoodjTextField.setText("bairro tal");
 
         jLabel12.setText("Cidade");
 
-        cityjTextField.setText("jTextField1");
+        cityjTextField.setText("ciadede tal");
 
         jLabel13.setText("CEP");
 
-        cepjTextField.setText("jTextField1");
+        cepjTextField.setText("0642900");
 
         jLabel14.setText("Data de contratação");
 
@@ -216,11 +234,16 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         jLabel16.setText("Data  de ASO (exame médico)");
 
         jobFunctionjList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "lista de funções de JobsAvailabe.java" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jobFunctionjList);
+        jobFunctionjList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jobFunctionjListMouseClicked(evt);
+            }
+        });
+        jobFunctionjListjScrollPane.setViewportView(jobFunctionjList);
 
         jLabel17.setText("Função");
 
@@ -250,7 +273,7 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         dependentsListPanel.setLayout(dependentsListPanelLayout);
         dependentsListPanelLayout.setHorizontalGroup(
             dependentsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+            .addGap(0, 878, Short.MAX_VALUE)
         );
         dependentsListPanelLayout.setVerticalGroup(
             dependentsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,19 +282,53 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
         dependentsListScrollPane.setViewportView(dependentsListPanel);
 
-        jobOperationNRsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "lista de nrs de NRList.java" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jobOperationNRscrollPane.setViewportView(jobOperationNRsList);
-
         jButton1.setText("Salvar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
+
+        jobOperationNRsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "lista de nrs de NRList.java" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jobOperationNRsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jobOperationNRsListValueChanged(evt);
+            }
+        });
+        jobOperationNRscrollPane.setViewportView(jobOperationNRsList);
+
+        javax.swing.GroupLayout nrSelectListPanelLayout = new javax.swing.GroupLayout(nrSelectListPanel);
+        nrSelectListPanel.setLayout(nrSelectListPanelLayout);
+        nrSelectListPanelLayout.setHorizontalGroup(
+            nrSelectListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 675, Short.MAX_VALUE)
+        );
+        nrSelectListPanelLayout.setVerticalGroup(
+            nrSelectListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        nrSelectedListjScrollPane.setViewportView(nrSelectListPanel);
+
+        javax.swing.GroupLayout jobOperationNRListjPanelLayout = new javax.swing.GroupLayout(jobOperationNRListjPanel);
+        jobOperationNRListjPanel.setLayout(jobOperationNRListjPanelLayout);
+        jobOperationNRListjPanelLayout.setHorizontalGroup(
+            jobOperationNRListjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jobOperationNRscrollPane)
+            .addComponent(nrSelectedListjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        jobOperationNRListjPanelLayout.setVerticalGroup(
+            jobOperationNRListjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jobOperationNRListjPanelLayout.createSequentialGroup()
+                .addComponent(jobOperationNRscrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nrSelectedListjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -288,52 +345,52 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                             .addComponent(rgjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nameJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(militaryjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(asoDatejDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(adressComplementjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator3)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addNewDependentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(hieringDatejDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-                                .addComponent(salaryjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator2)
-                                .addComponent(streetjTextField)
-                                .addComponent(adressComplementjTextField)
-                                .addComponent(neighborhoodjTextField)
-                                .addComponent(cityjTextField)
-                                .addComponent(cepjTextField)
-                                .addComponent(jSeparator1)
-                                .addComponent(militaryjTextField)
-                                .addComponent(pisjTextField)
-                                .addComponent(workPermitjTextField)
-                                .addComponent(rgjTextField)
-                                .addComponent(cpfjTextField)
-                                .addComponent(namejTextField)
-                                .addComponent(jobOperationNRscrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dependentsListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 913, Short.MAX_VALUE))))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addNewDependentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salaryjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dependentsListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jobOperationNRListjPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(adressComplementjLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(hieringDatejDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jobFunctionjListjScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(streetjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(adressComplementjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(neighborhoodjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cityjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cepjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(militaryjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pisjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(workPermitjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rgjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cpfjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(namejTextField, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 1126, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(980, Short.MAX_VALUE)))
+                    .addContainerGap(1267, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,8 +458,8 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jobFunctionjListjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salaryjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,23 +468,23 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jobOperationNRscrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jobOperationNRListjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
                 .addComponent(jLabel8)
                 .addGap(3, 3, 3)
                 .addComponent(addNewDependentButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dependentsListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(47, 47, 47)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1098, Short.MAX_VALUE))
+                .addContainerGap(980, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(28, 28, 28)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(2762, Short.MAX_VALUE)))
+                    .addContainerGap(2802, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -443,22 +500,42 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1802, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1853, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private final String[] JobLocalInputListOptionsPopulate = {"Obra", "Escritório"};
+
+    private void JobLocalInputListOptionsPopulate() {
+
+        jobLocalInputList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = JobLocalInputListOptionsPopulate;
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public String getElementAt(int i) {
+                return strings[i];
+            }
+        });
+
+    }
 
     private void jobLocalInputListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jobLocalInputListValueChanged
         // TODO add your handling code here:
 
         if (jobLocalInputList.getSelectedValue() == null ? JobLocalInputListOptionsPopulate[1] == null : jobLocalInputList.getSelectedValue().equals(JobLocalInputListOptionsPopulate[1])) {
-            jobOperationNRscrollPane.setVisible(true);
             System.out.println("jobLocalInputListOption1.setVisible(true);");
+            jobOperationNRListjPanel.setVisible(false);
 
-        } else
-            jobOperationNRscrollPane.setVisible(false);
+        } else {
+            jobOperationNRListjPanel.setVisible(true);
+
+        }
+        pack();
     }//GEN-LAST:event_jobLocalInputListValueChanged
 
     private void addNewDependentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addNewDependentButtonMouseClicked
@@ -480,19 +557,64 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        // JList components
+        System.out.println("jobFunctionjList: " + jobFunctionjList.getSelectedValue());
+        System.out.println("jobLocalInputList: " + jobLocalInputList.getSelectedValue());
+        System.out.println("jobOperationNRsList: " + jobOperationNRsList.getSelectedValue());
+        System.out.println("");
+        System.out.println("Custom inputs:");
+
+        System.out.println("newDependentTextFieldList:");
+        for (NewDependentInput dependent : newDependentTextFieldList) {
+            System.out.println(dependent.toString());
+        }
+        System.out.println("");
+
+//        // JTextField components
+//        System.out.println("adressComplementjTextField: " + adressComplementjTextField.getText());
+//        System.out.println("cepjTextField: " + cepjTextField.getText());
+//        System.out.println("cityjTextField: " + cityjTextField.getText());
+//        System.out.println("cpfjTextField: " + cpfjTextField.getText());
+//        System.out.println("militaryjTextField: " + militaryjTextField.getText());
+//        System.out.println("namejTextField: " + namejTextField.getText());
+//        System.out.println("neighborhoodjTextField: " + neighborhoodjTextField.getText());
+//        System.out.println("pisjTextField: " + pisjTextField.getText());
+//        System.out.println("rgjTextField: " + rgjTextField.getText());
+//        System.out.println("salaryjTextField: " + salaryjTextField.getText());
+//        System.out.println("streetjTextField: " + streetjTextField.getText());
+//        System.out.println("workPermitjTextField: " + workPermitjTextField.getText());
+        // JDateChooser components
+        System.out.println("asoDatejDateChooser: " + (asoDatejDateChooser.getDate()));
+        System.out.println("hieringDatejDateChooser: " + (hieringDatejDateChooser.getDate()));
+
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jobOperationNRsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jobOperationNRsListValueChanged
+
+        JList<String> source = (JList<String>) evt.getSource();
+        String selectedValue = source.getSelectedValue().split("%")[0].trim();
+        System.out.println("Selected value: " + selectedValue);
+
+        NRsChoosenPanel nRsChoosenPanel = new NRsChoosenPanel(selectedValue, nrsChoosenDateList);
+
+        nrsChoosenDateList.add(new NRChosenInput(nRsChoosenPanel.nrExamDateChooser));
+
+        nrSelectListPanel.add(nRsChoosenPanel);
+        jobOperationNRListjPanel.add(nRsChoosenPanel);
+        pack();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jobOperationNRsListValueChanged
+
+    private void jobFunctionjListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobFunctionjListMouseClicked
+        JList<String> source = (JList<String>) evt.getSource();
+        String selectedValue = source.getSelectedValue();
+        salaryjTextField.setText(Double.toString(jobList.salaryByTitle(selectedValue)));
+    }//GEN-LAST:event_jobFunctionjListMouseClicked
     // GEN-LAST:event_dependentsCheckBoxActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField1ActionPerformed
@@ -545,6 +667,13 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
         });
     }
 
+    //Variables not netbeans;
+    private final ArrayList<NewDependentInput> newDependentTextFieldList;
+    private final ArrayList<NRChosenInput> nrsChoosenDateList = new ArrayList<NRChosenInput>();
+    private final JobsAvailable jobList = new JobsAvailable();
+
+    //End ofVariables not netbeans;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNewDependentButton;
     private javax.swing.JLabel adressComplementjLabel;
@@ -573,13 +702,14 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JList<String> jobFunctionjList;
+    private javax.swing.JScrollPane jobFunctionjListjScrollPane;
     private javax.swing.JList<String> jobLocalInputList;
+    private javax.swing.JPanel jobOperationNRListjPanel;
     private javax.swing.JList<String> jobOperationNRsList;
     private javax.swing.JScrollPane jobOperationNRscrollPane;
     private javax.swing.JLabel militaryjLabel;
@@ -587,6 +717,8 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
     private javax.swing.JLabel nameJLabel;
     private javax.swing.JTextField namejTextField;
     private javax.swing.JTextField neighborhoodjTextField;
+    private javax.swing.JPanel nrSelectListPanel;
+    private javax.swing.JScrollPane nrSelectedListjScrollPane;
     private javax.swing.JLabel pisjLabel;
     private javax.swing.JTextField pisjTextField;
     private javax.swing.JLabel rgjLabel;
