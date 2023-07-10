@@ -1,6 +1,5 @@
 package modena.infra.db.sqlite.connect;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,17 +7,13 @@ import java.sql.Statement;
 
 public class ConnectionManagerSQLite {
 
-    public static Connection connection;
+    private static Connection connection;
 
     private final static String DB_NAME = "sqlite_db.db";
 
     public static Connection getDbConnection() {
         try {
             Class.forName("org.sqlite.JDBC");
-
-            // delete file sqlite_db.db
-            File file = new File(DB_NAME);
-            file.delete();
 
             connection = DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
             checkDatabase();

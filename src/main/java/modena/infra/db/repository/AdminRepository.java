@@ -13,6 +13,7 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
 
     @Override
     public AdminEntity create(AdminEntity object) {
+        Connection connection = getDbConnection();
 
         String sqlCode = String.format(
                 "INSERT INTO admin (name,username, email, password, role, status) VALUES ('%s', '%s', '%s', '%s', '%s','%s');",
@@ -23,6 +24,7 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
             PreparedStatement ps = connection.prepareStatement(sqlCode);
 
             ps.execute();
+            connection.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -33,8 +35,8 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
 
     @Override
     public AdminEntity read(AdminEntity object) {
+        Connection connection = getDbConnection();
 
-        // make sql with login with user and password
         String sqlCode = String.format("SELECT * FROM admin WHERE username = '%s' AND password = '%s';",
                 object.getUsername(), object.getPassword());
         try {
@@ -74,6 +76,7 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
 
     @Override
     public void put(String key, String value) {
+        Connection connection = getDbConnection();
 
         String sqlCode = String.format("UPDATE admin SET %s = '%s' WHERE id = 1;", key, value);
 

@@ -13,6 +13,7 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
 
     @Override
     public NrEntity create(NrEntity object) {
+        Connection connection = getDbConnection();
 
         String sqlCode = "INSERT INTO nr (name, user_id) VALUES (?, ?)";
 
@@ -31,6 +32,8 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
 
     @Override
     public NrEntity read(NrEntity object) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "SELECT * FROM nr WHERE id = ?";
 
         try {
@@ -55,6 +58,7 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
 
     @Override
     public int update(NrEntity object) {
+        Connection connection = getDbConnection();
         String sqlCode = "UPDATE nr SET name = ?, user_id = ? WHERE id = ?";
 
         try {
@@ -73,6 +77,7 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
 
     @Override
     public int delete(NrEntity object) {
+        Connection connection = getDbConnection();
         String sqlCode = "DELETE FROM nr WHERE id = ?";
 
         try {
@@ -89,6 +94,7 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
 
     @Override
     public ArrayList<NrEntity> list(NrEntity object) {
+        Connection connection = getDbConnection();
         ArrayList<NrEntity> nrs = new ArrayList<>();
 
         String sqlCode = "SELECT * FROM nr";

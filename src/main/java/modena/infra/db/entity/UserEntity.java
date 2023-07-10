@@ -115,7 +115,10 @@ public class UserEntity extends CommonEntity {
     }
 
     public void setMilitaryReservist(String militaryReservist) {
+        System.out.println(militaryReservist);
         this.militaryReservist = militaryReservist.replaceAll("[^\\d]", "");
+        System.out.println(this.militaryReservist);
+
     }
 
     public String getAdressStreet() {

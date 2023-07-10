@@ -6,6 +6,7 @@ import modena.infra.db.entity.UserEntity;
 import modena.infra.db.repository.AdminRepository;
 import modena.infra.db.repository.NrRepository;
 import modena.infra.db.repository.UserRepository;
+import modena.infra.db.sqlite.connect.ConnectionManagerSQLite;
 import modena.ui.admin.LoginFrameBeans;
 
 public class App {
@@ -30,8 +31,8 @@ public class App {
         userEntity.setAddress("rua1%bloco1%apto1%bairro1%cidade1%cep1");
         userEntity.setSalary(0);
         userEntity.setPis("22141232");
-        userEntity.setWorkPermit("admin");
-        userEntity.setMilitaryReservist("admin");
+        userEntity.setWorkPermit("adm2321322421214151414in");
+        userEntity.setMilitaryReservist("21342423");
         userEntity.setHeiringDate("2023-07-10");
         userEntity.setOperationState("admin");
         userEntity.setStatus(true);
@@ -52,6 +53,7 @@ public class App {
     }
 
     static void boot() {
+
         AdminRepository adminRepository = new AdminRepository();
         AdminEntity adminEntity = new AdminEntity("admin", "admin", "admin",
                 "admin.email@email.com");

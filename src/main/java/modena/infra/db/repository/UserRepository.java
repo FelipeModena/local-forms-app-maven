@@ -9,15 +9,12 @@ import modena.infra.db.entity.UserEntity;
 import modena.infra.db.repository.interfaces.RepositoryInterface;
 import modena.infra.db.sqlite.connect.ConnectionManagerSQLite;
 
-public class UserRepository implements RepositoryInterface<UserEntity> {
-    private Connection connection;
-
-    public UserRepository() {
-        connection = ConnectionManagerSQLite.getDbConnection();
-    }
+public class UserRepository extends ConnectionManagerSQLite implements RepositoryInterface<UserEntity> {
 
     @Override
     public UserEntity create(UserEntity object) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "INSERT INTO user (name, email, cpf, rg, address, salary, pis, work_permit, military_reservist, heiring_date, operation_state, status) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -37,6 +34,8 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
             ps.setBoolean(12, object.isStatus());
 
             ps.executeUpdate();
+            connection.close();
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -46,6 +45,8 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
 
     @Override
     public UserEntity read(UserEntity object) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "SELECT * FROM user WHERE id = ?";
 
         try {
@@ -68,6 +69,7 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
                 userEntity.setHeiringDate(rs.getString("heiring_date"));
                 userEntity.setOperationState(rs.getString("operation_state"));
                 userEntity.setStatus(rs.getBoolean("status"));
+                connection.close();
 
                 return userEntity;
             }
@@ -79,6 +81,8 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
     }
 
     public UserEntity getByName(String name) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "SELECT * FROM user WHERE name = ?";
 
         try {
@@ -101,6 +105,7 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
                 userEntity.setHeiringDate(rs.getString("heiring_date"));
                 userEntity.setOperationState(rs.getString("operation_state"));
                 userEntity.setStatus(rs.getBoolean("status"));
+                connection.close();
 
                 return userEntity;
             }
@@ -113,6 +118,8 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
 
     @Override
     public int update(UserEntity object) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "UPDATE user SET name = ?, email = ?, cpf = ?, rg = ?, phone = ?, address = ?, salary = ?, pis = ?, work_permit = ?, military_reservist = ?, heiring_date = ?, operation_state = ?, status = ? "
                 + "WHERE id = ?";
 
@@ -131,8 +138,9 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
             ps.setString(12, object.getOperationState());
             ps.setBoolean(13, object.isStatus());
             ps.setInt(14, object.getId());
-
-            return ps.executeUpdate();
+            int result = ps.executeUpdate();
+            connection.close();
+            return result;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -142,13 +150,18 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
 
     @Override
     public int delete(UserEntity object) {
+        Connection connection = getDbConnection();
+
         String sqlCode = "DELETE FROM user WHERE id = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sqlCode);
             ps.setInt(1, object.getId());
+            int result = ps.executeUpdate();
 
-            return ps.executeUpdate();
+            connection.close();
+
+            return result;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -158,6 +171,8 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
 
     @Override
     public ArrayList<UserEntity> list(UserEntity object) {
+        Connection connection = getDbConnection();
+
         ArrayList<UserEntity> users = new ArrayList<>();
 
         String sqlCode = "SELECT * FROM user";
@@ -183,6 +198,7 @@ public class UserRepository implements RepositoryInterface<UserEntity> {
                 userEntity.setStatus(rs.getBoolean("status"));
 
                 users.add(userEntity);
+                connection.close();
             }
         } catch (Exception e) {
             System.out.println(e);

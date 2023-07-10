@@ -12,14 +12,10 @@ import modena.infra.db.sqlite.connect.ConnectionManagerSQLite;
 
 public class ProjectRepository extends ConnectionManagerSQLite implements RepositoryInterface<ProjectEntity> {
 
-    private Connection connection;
-
-    public ProjectRepository() {
-        connection = ConnectionManagerSQLite.getDbConnection();
-    }
-
     @Override
     public ProjectEntity create(ProjectEntity project) {
+        Connection connection = getDbConnection();
+
         try {
             PreparedStatement statement = connection.prepareStatement(
                     "INSERT INTO projects (name, description, start_date, end_date, status) VALUES (?, ?, ?, ?, ?)");
@@ -35,15 +31,18 @@ public class ProjectRepository extends ConnectionManagerSQLite implements Reposi
             }
             generatedKeys.close();
             statement.close();
-
+            connection.close();
             return project;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
     public ProjectEntity read(int id) {
+        Connection connection = getDbConnection();
+
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM projects WHERE id = ?");
             statement.setInt(1, id);
@@ -72,6 +71,8 @@ public class ProjectRepository extends ConnectionManagerSQLite implements Reposi
 
     @Override
     public int update(ProjectEntity updatedProject) {
+        Connection connection = getDbConnection();
+
         try {
             PreparedStatement statement = connection.prepareStatement(
                     "UPDATE projects SET name = ?, description = ?, start_date = ?, end_date = ?, status = ? WHERE id = ?");
