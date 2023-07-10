@@ -18,7 +18,6 @@ public class ConnectionManagerSQLite {
             connection = DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
             checkDatabase();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return connection;
@@ -80,6 +79,27 @@ public class ConnectionManagerSQLite {
         }
     }
 
+    private static void userDependentTableMigration(Statement stmt) throws SQLException {
+
+        String sqlCreateUserTable = "CREATE TABLE IF NOT EXISTS userDependent ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "name TEXT NOT NULL,"
+                + "age INTEGER NOT NULL,"
+                + "user_id INTEGER NOT NULL,"
+                + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
+                + "updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
+                + "FOREIGN KEY(user_id) REFERENCES user (id) ON DELETE CASCADE"
+                + ");";
+
+        try {
+            stmt.executeUpdate(sqlCreateUserTable);
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+    }
+
     private static void userTableMigration(Statement stmt) throws SQLException {
 
         String sqlCreateUserTable = "CREATE TABLE IF NOT EXISTS user ("
@@ -96,25 +116,6 @@ public class ConnectionManagerSQLite {
                 + "heiring_date DATETIME NOT NULL,"
                 + "operation_state TEXT NOT NULL,"
                 + "status BOOLEAN NOT NULL,"
-                + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
-                + "updated_at DATETIME DEFAULT CURRENT_TIMESTAMP"
-                + ");";
-
-        try {
-            stmt.executeUpdate(sqlCreateUserTable);
-            stmt.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private static void userDependentTableMigration(Statement stmt) throws SQLException {
-
-        String sqlCreateUserTable = "CREATE TABLE IF NOT EXISTS userDependent ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "name TEXT NOT NULL,"
-                + "age INTEGER NOT NULL,"
                 + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
                 + "updated_at DATETIME DEFAULT CURRENT_TIMESTAMP"
                 + ");";

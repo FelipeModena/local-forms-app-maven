@@ -118,6 +118,31 @@ public class NrRepository extends ConnectionManagerSQLite implements RepositoryI
         return nrs;
     }
 
+    public ArrayList<NrEntity> listByUserId(int userId) {
+        Connection connection = getDbConnection();
+        ArrayList<NrEntity> nrs = new ArrayList<>();
+
+        String sqlCode = "SELECT * FROM nr WHERE user_id = " + userId + "";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sqlCode);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                NrEntity nrEntity = new NrEntity();
+                nrEntity.setId(rs.getInt("id"));
+                nrEntity.setName(rs.getString("name"));
+                nrEntity.setUserId(rs.getInt("user_id"));
+
+                nrs.add(nrEntity);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return nrs;
+    }
+
     @Override
     public void put(String key, String value) {
         // Not implemented for NrEntity
