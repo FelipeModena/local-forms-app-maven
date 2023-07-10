@@ -4,7 +4,10 @@ public class AdminEntity extends UserEntity {
     public Role role;
 
     public AdminEntity(String name, String username, String password, String email) {
-        super(name, email, username, password);
+        setName(name);
+        setPassword(password);
+        setUsername(username);
+        setEmail(email);
         role = Role.ADMIN;
     }
 

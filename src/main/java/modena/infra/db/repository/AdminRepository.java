@@ -9,20 +9,15 @@ import modena.infra.db.entity.AdminEntity;
 import modena.infra.db.repository.interfaces.RepositoryInterface;
 import modena.infra.db.sqlite.connect.ConnectionManagerSQLite;
 
-public class AdminRepository implements RepositoryInterface<AdminEntity> {
-    private Connection connection;
-
-    public AdminRepository() {
-        connection = ConnectionManagerSQLite.getDbConnection();
-
-        // TODO Auto-generated constructor stub
-    }
+public class AdminRepository extends ConnectionManagerSQLite implements RepositoryInterface<AdminEntity> {
 
     @Override
     public AdminEntity create(AdminEntity object) {
+
         String sqlCode = String.format(
                 "INSERT INTO admin (name,username, email, password, role, status) VALUES ('%s', '%s', '%s', '%s', '%s','%s');",
-                object.name, object.username, object.email, object.password, object.role.toString(), "active");
+                object.getName(), object.getUsername(), object.getEmail(), object.getPassword(), object.role.toString(),
+                "active");
 
         try {
             PreparedStatement ps = connection.prepareStatement(sqlCode);
@@ -41,7 +36,7 @@ public class AdminRepository implements RepositoryInterface<AdminEntity> {
 
         // make sql with login with user and password
         String sqlCode = String.format("SELECT * FROM admin WHERE username = '%s' AND password = '%s';",
-                object.username, object.password);
+                object.getUsername(), object.getPassword());
         try {
             PreparedStatement ps = connection.prepareStatement(sqlCode);
 

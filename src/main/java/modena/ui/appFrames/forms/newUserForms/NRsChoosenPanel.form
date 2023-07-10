@@ -38,12 +38,8 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="nrExamDateChooser" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                      <Component id="deleteJButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nrTitlejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="deleteJButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="nrTitlejLabel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>

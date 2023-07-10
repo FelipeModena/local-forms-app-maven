@@ -10,7 +10,7 @@ import modena.infra.db.entity.ProjectEntity;
 import modena.infra.db.repository.interfaces.RepositoryInterface;
 import modena.infra.db.sqlite.connect.ConnectionManagerSQLite;
 
-public class ProjectRepository implements RepositoryInterface<ProjectEntity> {
+public class ProjectRepository extends ConnectionManagerSQLite implements RepositoryInterface<ProjectEntity> {
 
     private Connection connection;
 

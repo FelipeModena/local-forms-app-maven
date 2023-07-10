@@ -1,6 +1,5 @@
 package modena.ui.admin;
 
-import javax.swing.JPanel;
 import modena.infra.usecase.AdminUsecase;
 import modena.ui.appFrames.DashboardFrameBeans;
 

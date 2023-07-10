@@ -25,8 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="737" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="761" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,67 +48,67 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cpfJlabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="pisjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="workPermitjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="rgjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="nameJLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="militaryjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="jLabel14" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                  <Component id="asoDatejDateChooser" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cpfJlabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="pisjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="workPermitjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="rgjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="nameJLabel" min="-2" pref="196" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton1" min="-2" pref="166" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                  <Component id="addNewDependentButton" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                                  <Component id="salaryjTextField" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Component id="jLabel18" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                                  <Component id="dependentsListScrollPane" alignment="0" pref="677" max="32767" attributes="0"/>
-                                  <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jobOperationNRListjPanel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="adressComplementjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="jLabel13" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="jLabel17" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="jLabel16" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="hieringDatejDateChooser" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jobFunctionjListjScrollPane" alignment="0" pref="537" max="32767" attributes="0"/>
-                                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="streetjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="adressComplementjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="neighborhoodjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cityjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cepjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="militaryjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="pisjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="workPermitjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="rgjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cpfjTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="namejTextField" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                              <Component id="militaryjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel15" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="asoDatejDateChooser" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveFormsjButton" min="-2" pref="166" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="addNewDependentButton" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                              <Component id="jLabel18" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="adressComplementjLabel" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel11" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="jLabel16" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="hieringDatejDateChooser" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cepjTextField" alignment="0" pref="704" max="32767" attributes="0"/>
+                              <Component id="salaryjTextField" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel19" alignment="0" pref="704" max="32767" attributes="0"/>
+                              <Component id="jobOperationNRListjPanel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cityjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="neighborhoodjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="adressComplementjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="streetjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="militaryjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="pisjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="workPermitjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="rgjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cpfjTextField" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="namejTextField" min="-2" pref="324" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jTextField1" pref="212" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="1126" max="32767" attributes="0"/>
+                              <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="dependentsListScrollPane" alignment="0" min="-2" pref="644" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jobFunctionjListjScrollPane" min="-2" pref="347" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="537" max="-2" attributes="0"/>
-                          <EmptySpace pref="1267" max="32767" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="407" max="-2" attributes="0"/>
+                          <EmptySpace pref="394" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -118,9 +117,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="nameJLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nameJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="namejTextField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="namejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="cpfJlabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -182,7 +187,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jobFunctionjListjScrollPane" min="-2" pref="91" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel18" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="salaryjTextField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -191,7 +196,7 @@
                       <Component id="jScrollPane3" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jobOperationNRListjPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="13" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -200,8 +205,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="dependentsListScrollPane" min="-2" pref="169" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="57" max="-2" attributes="0"/>
-                      <EmptySpace pref="980" max="32767" attributes="0"/>
+                      <Component id="saveFormsjButton" min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace pref="1078" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -415,12 +420,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sal&#xe1;rio ( usar virgula para centavos)"/>
+                <Property name="text" type="java.lang.String" value="Sal&#xe1;rio ( usar ponto (.) para centavos)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="salaryjTextField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="12,5"/>
+                <Property name="text" type="java.lang.String" value="1500"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -482,12 +487,12 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="saveFormsjButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="saveFormsjButtonMouseClicked"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jobOperationNRListjPanel">
@@ -495,23 +500,30 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jobOperationNRscrollPane" max="32767" attributes="0"/>
-                      <Component id="nrSelectedListjScrollPane" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <Component id="jobOperationNRsjscrollPane" min="-2" pref="287" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jobOpeationNRsListSelectedjScrollPane" min="-2" pref="398" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jobOperationNRscrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="nrSelectedListjScrollPane" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jobOpeationNRsListSelectedjScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jobOperationNRsjscrollPane" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jobOperationNRscrollPane">
+                <Container class="javax.swing.JScrollPane" name="jobOperationNRsjscrollPane">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -527,7 +539,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jobOperationNRsListValueChanged"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jobOperationNRsListMouseReleased"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -535,21 +547,21 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="nrSelectedListjScrollPane">
+                <Container class="javax.swing.JScrollPane" name="jobOpeationNRsListSelectedjScrollPane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="nrSelectListPanel">
+                    <Container class="javax.swing.JPanel" name="jobOperationNRsListSelectedjPanel">
 
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="675" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="655" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="179" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -559,6 +571,16 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JSeparator" name="jSeparator3">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Idade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="26"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
