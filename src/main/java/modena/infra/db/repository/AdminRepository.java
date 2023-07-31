@@ -47,6 +47,7 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
                 AdminEntity adminEntity = new AdminEntity(rs.getString("name"), rs.getString("username"),
                         rs.getString("password"), rs.getString("email"));
 
+                connection.close();
                 return adminEntity;
             }
 
@@ -84,6 +85,7 @@ public class AdminRepository extends ConnectionManagerSQLite implements Reposito
             PreparedStatement ps = connection.prepareStatement(sqlCode);
 
             ps.execute();
+            connection.close();
         } catch (Exception e) {
             System.out.println(e);
         }

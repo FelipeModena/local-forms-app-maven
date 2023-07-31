@@ -18,7 +18,23 @@ public class ConnectionManagerSQLite {
             connection = DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
             checkDatabase();
         } catch (Exception e) {
-            System.exit(0);
+            // Check if the exception is related to a locked database
+            if (e.getMessage().contains("database is locked")) {
+                // Handle the SQLite busy error here
+                System.err.println("The database is currently locked. Please try again later.");
+            } else {
+                // Handle other SQL exceptions
+                e.printStackTrace();
+            }
+        } finally {
+            // Close the connection in the finally block to release any resources
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return connection;
 
@@ -41,7 +57,6 @@ public class ConnectionManagerSQLite {
             nrTableMigration(stmt);
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -114,6 +129,7 @@ public class ConnectionManagerSQLite {
                 + "work_permit TEXT NOT NULL,"
                 + "military_reservist TEXT NOT NULL,"
                 + "heiring_date DATETIME NOT NULL,"
+                + "aso DATETIME NOT NULL,"
                 + "operation_state TEXT NOT NULL,"
                 + "status BOOLEAN NOT NULL,"
                 + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP,"

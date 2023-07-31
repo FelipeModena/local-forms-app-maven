@@ -15,8 +15,8 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
     public UserEntity create(UserEntity object) {
         Connection connection = getDbConnection();
 
-        String sqlCode = "INSERT INTO user (name, email, cpf, rg, address, salary, pis, work_permit, military_reservist, heiring_date, operation_state, status) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlCode = "INSERT INTO user (name, email, cpf, rg, address, salary, pis, work_permit, military_reservist, heiring_date, operation_state, status, aso) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sqlCode);
@@ -32,12 +32,14 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
             ps.setString(10, object.getHeiringDate());
             ps.setString(11, object.getOperationState());
             ps.setBoolean(12, object.isStatus());
+            ps.setString(13, object.getAsoDate());
 
             ps.executeUpdate();
-            connection.close();
 
+            connection.close();
         } catch (Exception e) {
             System.out.println(e);
+
         }
 
         return null;
@@ -61,7 +63,7 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
                 userEntity.setEmail(rs.getString("email"));
                 userEntity.setCpf(rs.getString("cpf"));
                 userEntity.setRg(rs.getString("rg"));
-                userEntity.setAddress(rs.getString("address"));
+                userEntity.setAddressRepository(rs.getString("address"));
                 userEntity.setSalary(rs.getDouble("salary"));
                 userEntity.setPis(rs.getString("pis"));
                 userEntity.setWorkPermit(rs.getString("work_permit"));
@@ -97,7 +99,7 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
                 userEntity.setEmail(rs.getString("email"));
                 userEntity.setCpf(rs.getString("cpf"));
                 userEntity.setRg(rs.getString("rg"));
-                userEntity.setAddress(rs.getString("address"));
+                userEntity.setAddressRepository(rs.getString("address"));
                 userEntity.setSalary(rs.getDouble("salary"));
                 userEntity.setPis(rs.getString("pis"));
                 userEntity.setWorkPermit(rs.getString("work_permit"));
@@ -188,7 +190,7 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
                 userEntity.setEmail(rs.getString("email"));
                 userEntity.setCpf(rs.getString("cpf"));
                 userEntity.setRg(rs.getString("rg"));
-                userEntity.setAddress(rs.getString("address"));
+                userEntity.setAddressRepository(rs.getString("address"));
                 userEntity.setSalary(rs.getDouble("salary"));
                 userEntity.setPis(rs.getString("pis"));
                 userEntity.setWorkPermit(rs.getString("work_permit"));
