@@ -17,17 +17,38 @@ public class UserDependentRepository implements RepositoryInterface<UserDependen
 
     @Override
     public UserDependentEntity create(UserDependentEntity object) {
-        String sqlCode = "INSERT INTO userDependent (name, age, user_id) VALUES (?, ?, ?)";
+        String sqlCode = "INSERT INTO userDependent (name, age, user_id, dependency) VALUES (?, ?, ?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sqlCode);
             ps.setString(1, object.getName());
             ps.setInt(2, object.getAge());
             ps.setInt(3, object.getUserId());
+            ps.setString(4, object.getDependency());
 
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
+        }
+
+        return null;
+    }
+
+    public UserDependentEntity createByList(ArrayList<UserDependentEntity> object) {
+        String sqlCode = "INSERT INTO userDependent (name, age, user_id, dependency) VALUES (?, ?, ?, ?)";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sqlCode);
+            for (UserDependentEntity userDependentEntity : object) {
+                ps.setString(1, userDependentEntity.getName());
+                ps.setInt(2, userDependentEntity.getAge());
+                ps.setInt(3, userDependentEntity.getUserId());
+                ps.setString(4, userDependentEntity.getDependency());
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
 
         return null;

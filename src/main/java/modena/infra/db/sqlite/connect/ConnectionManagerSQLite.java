@@ -91,6 +91,7 @@ public class ConnectionManagerSQLite {
                 + "name TEXT NOT NULL,"
                 + "age INTEGER NOT NULL,"
                 + "user_id INTEGER NOT NULL,"
+                + "dependency TEXT,"
                 + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
                 + "updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,"
                 + "FOREIGN KEY(user_id) REFERENCES user (id) ON DELETE CASCADE"
