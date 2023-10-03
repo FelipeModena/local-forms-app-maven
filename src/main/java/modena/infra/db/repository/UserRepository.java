@@ -15,26 +15,39 @@ public class UserRepository extends ConnectionManagerSQLite implements Repositor
     public UserEntity create(UserEntity object) {
         Connection connection = getDbConnection();
 
-        String sqlCode = "INSERT INTO user (name, email, cpf, rg, address, salary, pis, work_permit, military_reservist, heiring_date, operation_state, status, aso) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = String.format(
+                "INSERT INTO user (name, email, cpf, rg, address, salary, pis, work_permit, military_reservist, heiring_date, operation_state, status, aso)  VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s');",
+                object.getName(),
+                object.getEmail(),
+                object.getCpf(),
+                object.getRg(),
+                object.getAddress(),
+                object.getSalary(),
+                object.getPis(),
+                object.getWorkPermit(),
+                object.getMilitaryReservist(),
+                object.getHeiringDate(),
+                object.getOperationState(),
+                object.isStatus(),
+                object.getAsoDate()
+
+        );
 
         try {
-            PreparedStatement ps = connection.prepareStatement(sqlCode);
-            ps.setString(1, object.getName());
-            ps.setString(2, object.getEmail());
-            ps.setString(3, object.getCpf());
-            ps.setString(4, object.getRg());
-            ps.setString(5, object.getAddress());
-            ps.setDouble(6, object.getSalary());
-            ps.setString(7, object.getPis());
-            ps.setString(8, object.getWorkPermit());
-            ps.setString(9, object.getMilitaryReservist());
-            ps.setString(10, object.getHeiringDate());
-            ps.setString(11, object.getOperationState());
-            ps.setBoolean(12, object.isStatus());
-            ps.setString(13, object.getAsoDate());
+            PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-            ps.executeUpdate();
+            UserEntity userEntity = new UserEntity();
+
+            int affectedRows = ps.executeUpdate();
+
+            if (affectedRows > 0) {
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    userEntity.setId(generatedKeys.getInt(1));
+                    return userEntity;
+                }
+
+            }
 
             connection.close();
         } catch (Exception e) {

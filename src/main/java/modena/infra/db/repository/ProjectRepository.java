@@ -27,7 +27,7 @@ public class ProjectRepository extends ConnectionManagerSQLite implements Reposi
             statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
-                project.id = generatedKeys.getInt(1);
+                project.setId(generatedKeys.getInt(1));
             }
             generatedKeys.close();
             statement.close();
@@ -55,7 +55,7 @@ public class ProjectRepository extends ConnectionManagerSQLite implements Reposi
                         resultSet.getString("start_date"),
                         resultSet.getString("end_date"),
                         resultSet.getString("status"));
-                project.id = resultSet.getInt("id");
+                        project.setId(resultSet.getInt("id"));
                 resultSet.close();
                 statement.close();
                 return project;
@@ -81,10 +81,10 @@ public class ProjectRepository extends ConnectionManagerSQLite implements Reposi
             statement.setString(3, updatedProject.startDate);
             statement.setString(4, updatedProject.endDate);
             statement.setString(5, updatedProject.status);
-            statement.setInt(6, updatedProject.id);
+            statement.setInt(6, updatedProject.getId());
             statement.executeUpdate();
             statement.close();
-            return updatedProject.id;
+            return updatedProject.getId();
         } catch (SQLException e) {
             e.printStackTrace();
         }
