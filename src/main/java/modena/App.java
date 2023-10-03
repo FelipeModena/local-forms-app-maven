@@ -27,7 +27,7 @@ public class App {
     private static void test() {
 
         for (int i = 0; i < 5; i++) {
-            UserEntity userDb = testeUserTable(String.valueOf(i));
+            // UserEntity userDb = testeUserTable(String.valueOf(i));
         }
 
         // NrRepository nrRepository = testNrTable(userDb);
