@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class CommonEntity {
 
-    public int id;
+    private int id;
 
     public int getId() {
         return id;

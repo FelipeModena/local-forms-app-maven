@@ -87,9 +87,7 @@ public class JobsAvailable {
 
     public double salaryByTitle(String title) {
         int size = jobRole.size();
-        float resutlt;
         for (int i = 0; i < size; i++) {
-            Job job = jobRole.get(i);
             if (jobRole.get(i).title == title) {
                 return jobRole.get(i).salary;
             }

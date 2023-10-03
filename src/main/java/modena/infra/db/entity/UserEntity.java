@@ -1,5 +1,6 @@
 package modena.infra.db.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +18,10 @@ public class UserEntity extends CommonEntity {
     private String workPermit;
     private String pis;
     private String militaryReservist;
-    private String adressStreet;
-    private String addressComplement;
-    private String addressNeighborhood;
-    private String addressCity;
-    private String addressCode;
+    private String address;
     private Date heiringDate;
+    private Date asoDate;
+
     private double salary;
     private String operationState;
     private List<NrModel> nrsList;
@@ -99,7 +98,14 @@ public class UserEntity extends CommonEntity {
 
     public void setWorkPermit(String workPermit) {
         // remove all special characters
-        this.workPermit = workPermit.replaceAll("[^\\d]", "");
+        String workPermitWithoutSpecialCharacters = workPermit.replaceAll("[^0-9]", "");
+
+        if (workPermitWithoutSpecialCharacters.isEmpty()) {
+
+            throw new IllegalArgumentException("Work permit must be a number");
+        } else {
+            this.workPermit = workPermitWithoutSpecialCharacters;
+        }
     }
 
     public String getPis() {
@@ -119,44 +125,14 @@ public class UserEntity extends CommonEntity {
 
     }
 
-    public String getAdressStreet() {
-        return adressStreet;
+    public String getAsoDate() {
+        return convertDateToYearMonthDay(this.asoDate);
+
     }
 
-    public void setAdressStreet(String adressStreet) {
-        this.adressStreet = adressStreet;
-    }
+    public void setAsoDate(String asoDate) {
+        this.asoDate = convertYearMonthDayToDate(asoDate);
 
-    public String getAddressComplement() {
-        return addressComplement;
-    }
-
-    public void setAddressComplement(String addressComplement) {
-        this.addressComplement = addressComplement;
-    }
-
-    public String getAddressNeighborhood() {
-        return addressNeighborhood;
-    }
-
-    public void setAddressNeighborhood(String addressNeighborhood) {
-        this.addressNeighborhood = addressNeighborhood;
-    }
-
-    public String getAddressCity() {
-        return addressCity;
-    }
-
-    public void setAddressCity(String addressCity) {
-        this.addressCity = addressCity;
-    }
-
-    public String getAddressCode() {
-        return addressCode;
-    }
-
-    public void setAddressCode(String addressCode) {
-        this.addressCode = addressCode;
     }
 
     public String getHeiringDate() {
@@ -209,17 +185,21 @@ public class UserEntity extends CommonEntity {
     }
 
     public String getAddress() {
-        return this.adressStreet + "%" + this.addressComplement + "%" + this.addressNeighborhood + "%"
-                + this.addressCity + "%" + this.addressCode;
+
+        String[] address = new String[this.address.split("%").length];
+        return this.address;
     }
 
-    public void setAddress(String string) {
-        String[] address = string.split("%");
-        this.adressStreet = address[0];
-        this.addressComplement = address[1];
-        this.addressNeighborhood = address[2];
-        this.addressCity = address[3];
-        this.addressCode = address[4];
+    public void setAddress(ArrayList<String> listAddressStrings) {
+        String address = "";
+        for (String string : listAddressStrings) {
+            address += string + "%";
+        }
+        this.address = address;
+    }
+
+    public void setAddressRepository(String address) {
+        this.address = address;
     }
 
 }

@@ -26,15 +26,6 @@ public class ConnectionManagerSQLite {
                 // Handle other SQL exceptions
                 e.printStackTrace();
             }
-        } finally {
-            // Close the connection in the finally block to release any resources
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         return connection;
 
@@ -55,6 +46,7 @@ public class ConnectionManagerSQLite {
             userDependentTableMigration(stmt);
 
             nrTableMigration(stmt);
+            stmt.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +59,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateUserTable);
-            stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e.getMessage());
@@ -87,7 +78,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateUserTable);
-            stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e.getMessage());
@@ -108,7 +98,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateUserTable);
-            stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e.getMessage());
@@ -138,7 +127,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateUserTable);
-            stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e.getMessage());
@@ -159,7 +147,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateProjectsTable);
-            stmt.close();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -183,8 +170,6 @@ public class ConnectionManagerSQLite {
 
         try {
             stmt.executeUpdate(sqlCreateAdminTable);
-            stmt.close();
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
 

@@ -4,11 +4,7 @@
  */
 package modena.ui.appFrames.forms.newUserForms;
 
-import java.awt.Component;
 import java.util.ArrayList;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import org.w3c.dom.events.MouseEvent;
 
 /**
  *
