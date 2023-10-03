@@ -255,7 +255,7 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                 JLabel16.setText("Data  de ASO (exame médico)");
 
                 jobFunctionJList.setModel(new javax.swing.AbstractListModel<String>() {
-                        String[] strings = { "lista de funções de JobsAvailabe.java" };
+                        String[] strings = { "lista de funções de JobsAvailable.java" };
 
                         public int getSize() {
                                 return strings.length;
@@ -390,7 +390,7 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
                 ageJTextField.setText("26");
 
-                JLabel4.setText("email (não obrigatorio)");
+                JLabel4.setText("email (não obrigatório)");
 
                 emailJTextField.setText("email.com.br");
 
@@ -915,14 +915,10 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
                 address.add(addressComplementJTextField.getText());
 
                 heiringDateDateChooser.setDate(new Date());
-                System.out.println("contratação: " + heiringDateDateChooser.getDate());
 
                 asoDateJDateChooser.setDate(new Date());
-                System.out.println("ASO:" + asoDateJDateChooser.getDate());
                 jobFunctionJList.setSelectedIndex(0);
-                System.out.println("funcao: " + jobFunctionJList.getSelectedValue());
                 jobLocalInputList.setSelectedIndex(1);
-                System.out.println("local: " + jobLocalInputList.getSelectedValue());
                 NewUserFormsFrameBusiness newUserFormsFrameBusiness = new NewUserFormsFrameBusiness();
                 NewUserFormsFrameBusiness.NewUserFormsFrameBusinessProps newUserFormsFrameBusinessProps = newUserFormsFrameBusiness.new NewUserFormsFrameBusinessProps(
                                 nameJTextField.getText(),
@@ -955,8 +951,9 @@ public class NewUserFormsFrame extends javax.swing.JFrame {
 
                         }
 
-                        newUserFormsFrameBusiness.createUserDepedents(createNewUserResponse, userDependentProps);
+                        newUserFormsFrameBusiness.createUserDependents(createNewUserResponse, userDependentProps);
                 }
+
         }
 
         private void jobFunctionJListMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jobFunctionJListMouseClicked

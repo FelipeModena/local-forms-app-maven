@@ -107,7 +107,7 @@ public class NewUserFormsFrameBusiness {
 
         return response;
     }
-    public int createUserDepedents(int id, ArrayList<UserDependentProps> userDependentProps){
+    public int createUserDependents(int id, ArrayList<UserDependentProps> userDependentProps){
         try {
                 ArrayList<UserDependentEntity> userDependentEntities = new ArrayList<UserDependentEntity>();
             for (UserDependentProps user : userDependentProps) {
